@@ -7,7 +7,7 @@ import net.serenitybdd.screenplay.Question;
 /**
  * Pregunta (Question) que verifica el mensaje de error cuando se intenta registrar un correo ya existente.
  */
-public class    ElMensajeDeErrorRegistro implements Question<String> {
+public class ElMensajeDeErrorRegistro implements Question<String> {
 
     public static ElMensajeDeErrorRegistro visible() {
         return new ElMensajeDeErrorRegistro();

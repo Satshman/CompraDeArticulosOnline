@@ -33,7 +33,7 @@ public class IntentarRegistroConEmailExistente implements Task {
         if (!LoginPage.TXT_SIGNUP_NAME.resolveFor(actor).isVisible()) {
             actor.attemptsTo(
                     Click.on(HomePage.BTN_SIGNUP_LOGIN),
-                    EsperarElemento.seaVisible(LoginPage.TXT_SIGNUP_NAME, 10)
+                    EsperarElemento.seaVisible(LoginPage.TXT_SIGNUP_NAME, 20)
             );
         }
         actor.attemptsTo(
@@ -42,6 +42,7 @@ public class IntentarRegistroConEmailExistente implements Task {
                 Enter.theValue(email).into(LoginPage.TXT_SIGNUP_EMAIL),
                 Delay.forSocialization(),
                 Click.on(LoginPage.BTN_SIGNUP),
+                EsperarElemento.seaVisible(LoginPage.LBL_ERROR_EMAIL_EXISTENTE, 20),
                 Delay.forSocialization()
         );
     }

@@ -25,7 +25,7 @@ public class AbrirNavegador implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Open.url(Constantes.URL_AUTOMATION_EXERCISE),
-                Delay.ofSeconds(6)
+                Delay.ofSeconds(5)
         );
 
         if (HomePage.BTN_LOGOUT.resolveFor(actor).isVisible()) {
@@ -36,7 +36,7 @@ public class AbrirNavegador implements Task {
         }
 
         actor.attemptsTo(
-                EsperarElemento.seaVisible(HomePage.BTN_SIGNUP_LOGIN, 20),
+                EsperarElemento.seaVisible(HomePage.BTN_SIGNUP_LOGIN, 25),
                 Delay.forSocialization()
         );
     }

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="1" failures="0" name="Compra de artículos online en Automation Exercise" skipped="0" tests="1" time="0.73" timestamp="2026-11-18 05:30:15"><testcase name="Intento de registro fallido con un correo electrónico previamente utilizado"><error message="Could not instantiate class org.openqa.selenium.edge.EdgeDriver" type="net.thucydides.core.webdriver.DriverConfigurationError">Could not instantiate class org.openqa.selenium.edge.EdgeDriver</error><system-err>Could not instantiate class org.openqa.selenium.edge.EdgeDriver&#13;
-co.com.automationexercise.compra.tasks.AbrirNavegador.performAs(AbrirNavegador.java:21)&#13;
-co.com.automationexercise.compra.stepdefinitions.CompraArticulosStepDefinitions.queElCompradorAbreLaPaginaWebDeAutomationExercise(CompraArticulosStepDefinitions.java:39)&#13;
-worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)&#13;
-worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)&#13;
-</system-err></testcase></testsuite>

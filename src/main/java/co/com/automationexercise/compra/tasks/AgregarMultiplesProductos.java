@@ -24,13 +24,24 @@ public class AgregarMultiplesProductos implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                // 1. Agregar primer producto
+                // 1. Asegurar catálogo y agregar primer producto
+                EsperarElemento.seaVisible(HomePage.PRIMER_PRODUCTO_ADD, 20),
                 ScrollTo.element(HomePage.PRIMER_PRODUCTO_ADD),
                 Delay.forSocialization(),
                 JavaScriptClick.on(HomePage.PRIMER_PRODUCTO_ADD),
-                Delay.ofMillis(1500),
+                Delay.ofMillis(2000)
+        );
 
-                // 2. Agregar segundo producto
+        // Continuar comprando cerrando el modal de producto agregado si está presente
+        if (HomePage.MODAL_CONTINUE_SHOPPING.resolveFor(actor).isVisible()) {
+            actor.attemptsTo(
+                    JavaScriptClick.on(HomePage.MODAL_CONTINUE_SHOPPING),
+                    Delay.forSocialization()
+            );
+        }
+
+        actor.attemptsTo(
+                // 2. Desplazarse y agregar segundo producto
                 ScrollTo.element(HomePage.SEGUNDO_PRODUCTO_ADD),
                 Delay.forSocialization(),
                 JavaScriptClick.on(HomePage.SEGUNDO_PRODUCTO_ADD),
@@ -38,7 +49,7 @@ public class AgregarMultiplesProductos implements Task {
 
                 // 3. Abrir la página del carrito directamente
                 Open.url(Constantes.URL_AUTOMATION_EXERCISE + "/view_cart"),
-                EsperarElemento.seaVisible(CarritoPage.BTN_PROCEED_TO_CHECKOUT, 15),
+                EsperarElemento.seaVisible(CarritoPage.BTN_PROCEED_TO_CHECKOUT, 20),
                 Delay.forSocialization()
         );
     }

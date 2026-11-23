@@ -23,8 +23,10 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 /**
- * Step Definitions para la especificación BDD en lenguaje Gherkin.
+ * Step Definitions para la especificacion BDD en lenguaje Gherkin.
  * Conecta las sentencias de negocio con las Tasks y Questions de Screenplay.
+ * Configurado con texto sin caracteres especiales para garantizar 100% de compatibilidad
+ * multiplataforma (Windows, Linux, CI/CD, IntelliJ IDEA, Eclipse) evitando discrepancias de codificacion.
  */
 public class CompraArticulosStepDefinitions {
 
@@ -41,16 +43,21 @@ public class CompraArticulosStepDefinitions {
     @After
     public void finalizarEscenario() {
         OnStage.drawTheCurtain();
+        try {
+            Thread.sleep(2000); // Pausa preventiva entre escenarios para evitar saturacion en el servidor
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
-    @Dado("que el comprador abre la página web de Automation Exercise")
+    @Dado("que el comprador abre la pagina web de Automation Exercise")
     public void queElCompradorAbreLaPaginaWebDeAutomationExercise() {
         theActorInTheSpotlight().wasAbleTo(
                 AbrirNavegador.enAutomationExercise()
         );
     }
 
-    @Cuando("el comprador completa el registro con datos válidos de usuario y dirección")
+    @Cuando("el comprador completa el registro con datos validos de usuario y direccion")
     public void elCompradorCompletaElRegistroConDatosValidosDeUsuarioYDireccion() {
         usuarioActual = DataGenerator.generarUsuarioValido();
         theActorInTheSpotlight().attemptsTo(
@@ -58,21 +65,21 @@ public class CompraArticulosStepDefinitions {
         );
     }
 
-    @Cuando("selecciona un producto del catálogo y lo añade al carrito de compras")
-    public void seleccionaUnProductoDelCatalogoYLoAnadeAlCarritoDeCompras() {
+    @Cuando("selecciona un producto del catalogo y lo agrega al carrito de compras")
+    public void seleccionaUnProductoDelCatalogoYLoAgregaAlCarritoDeCompras() {
         theActorInTheSpotlight().attemptsTo(
                 AgregarProductoAlCarrito.enElCatalogo()
         );
     }
 
-    @Cuando("agrega múltiples productos al carrito de compras")
+    @Cuando("agrega multiples productos al carrito de compras")
     public void agregaMultiplesProductosAlCarritoDeCompras() {
         theActorInTheSpotlight().attemptsTo(
                 AgregarMultiplesProductos.alCarrito()
         );
     }
 
-    @Cuando("procede al checkout completando el pago con tarjeta de crédito")
+    @Cuando("procede al checkout completando el pago con tarjeta de credito")
     public void procedeAlCheckoutCompletandoElPagoConTarjetaDeCredito() {
         tarjetaActual = DataGenerator.generarTarjetaCreditoValida();
         theActorInTheSpotlight().attemptsTo(
@@ -81,7 +88,7 @@ public class CompraArticulosStepDefinitions {
         );
     }
 
-    @Entonces("debería observar la orden de compra confirmada con el mensaje {string}")
+    @Entonces("deberia observar la orden de compra confirmada con el mensaje {string}")
     public void deberiaObservarLaOrdenDeCompraConfirmadaConElMensaje(String mensajeEsperado) {
         theActorInTheSpotlight().should(
                 GivenWhenThen.seeThat(
@@ -101,14 +108,14 @@ public class CompraArticulosStepDefinitions {
         );
     }
 
-    @Cuando("el comprador intenta registrarse nuevamente con el mismo correo electrónico")
+    @Cuando("el comprador intenta registrarse nuevamente con el mismo correo electronico")
     public void elCompradorIntentaRegistrarseNuevamenteConElMismoCorreoElectronico() {
         theActorInTheSpotlight().attemptsTo(
                 IntentarRegistroConEmailExistente.conCredenciales("Usuario Duplicado", emailDuplicado)
         );
     }
 
-    @Entonces("debería visualizar el mensaje de advertencia {string}")
+    @Entonces("deberia visualizar el mensaje de advertencia {string}")
     public void deberiaVisualizarElMensajeDeAdvertencia(String mensajeEsperado) {
         theActorInTheSpotlight().should(
                 GivenWhenThen.seeThat(

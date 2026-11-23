@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/compra_articulos_online.feature",
+        features = "src/test/resources/features",
         glue = "co.com.automationexercise.compra.stepdefinitions",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         plugin = {"pretty"}

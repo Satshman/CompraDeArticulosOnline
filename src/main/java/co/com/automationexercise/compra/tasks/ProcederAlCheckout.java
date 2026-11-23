@@ -35,15 +35,16 @@ public class ProcederAlCheckout implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+                EsperarElemento.seaVisible(CarritoPage.BTN_PROCEED_TO_CHECKOUT, 20),
                 JavaScriptClick.on(CarritoPage.BTN_PROCEED_TO_CHECKOUT),
-                EsperarElemento.seaVisible(CheckoutPage.BTN_PLACE_ORDER),
+                EsperarElemento.seaVisible(CheckoutPage.BTN_PLACE_ORDER, 20),
                 Delay.forSocialization(),
                 ScrollTo.element(CheckoutPage.TXT_COMENTARIOS),
                 Enter.theValue(comentario).into(CheckoutPage.TXT_COMENTARIOS),
                 Delay.forSocialization(),
                 ScrollTo.element(CheckoutPage.BTN_PLACE_ORDER),
                 JavaScriptClick.on(CheckoutPage.BTN_PLACE_ORDER),
-                EsperarElemento.seaVisible(PagoPage.TXT_NAME_ON_CARD),
+                EsperarElemento.seaVisible(PagoPage.TXT_NAME_ON_CARD, 20),
                 Delay.forSocialization()
         );
     }

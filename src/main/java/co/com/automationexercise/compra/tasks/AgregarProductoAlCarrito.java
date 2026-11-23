@@ -24,12 +24,13 @@ public class AgregarProductoAlCarrito implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+                EsperarElemento.seaVisible(HomePage.PRIMER_PRODUCTO_ADD, 20),
                 ScrollTo.element(HomePage.PRIMER_PRODUCTO_ADD),
                 Delay.forSocialization(),
                 JavaScriptClick.on(HomePage.PRIMER_PRODUCTO_ADD),
                 Delay.ofMillis(2000),
                 Open.url(Constantes.URL_AUTOMATION_EXERCISE + "/view_cart"),
-                EsperarElemento.seaVisible(CarritoPage.BTN_PROCEED_TO_CHECKOUT, 15),
+                EsperarElemento.seaVisible(CarritoPage.BTN_PROCEED_TO_CHECKOUT, 20),
                 Delay.forSocialization()
         );
     }

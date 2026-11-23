@@ -47,19 +47,24 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:2.0.5'
     testImplementation("io.github.bonigarcia:webdrivermanager:5.4.1")
 
-    //Lombok dependencies (optional, disabled annotation processor for JDK 25 compatibility)
-    //compileOnly "org.projectlombok:lombok:${lombokVersion}"
-    //annotationProcessor  "org.projectlombok:lombok:${lombokVersion}"
-    //testCompileOnly  "org.projectlombok:lombok:${lombokVersion}"
-
     //Additional library
     implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.12.0'
+}
 
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('clean') {
+    doFirst {
+        delete "${rootDir}/target"
+    }
 }
 
 tasks.named('test') {
     systemProperties System.getProperties()
     systemProperty "file.encoding", "UTF-8"
+    jvmArgs "-Dfile.encoding=UTF-8"
     testLogging {
         events "passed", "skipped", "failed"
         showStandardStreams = true

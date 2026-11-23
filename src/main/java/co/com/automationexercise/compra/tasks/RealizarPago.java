@@ -30,6 +30,7 @@ public class RealizarPago implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+                EsperarElemento.seaVisible(PagoPage.TXT_NAME_ON_CARD, 20),
                 Enter.theValue(tarjeta.getNombreTitular()).into(PagoPage.TXT_NAME_ON_CARD),
                 Enter.theValue(tarjeta.getNumeroTarjeta()).into(PagoPage.TXT_CARD_NUMBER),
                 Enter.theValue(tarjeta.getCvc()).into(PagoPage.TXT_CVC),
@@ -37,7 +38,7 @@ public class RealizarPago implements Task {
                 Enter.theValue(tarjeta.getAnioExpiracion()).into(PagoPage.TXT_EXPIRY_YEAR),
                 Delay.forSocialization(),
                 JavaScriptClick.on(PagoPage.BTN_PAY_AND_CONFIRM),
-                EsperarElemento.seaVisible(ConfirmacionOrdenPage.LBL_ORDER_PLACED, 15),
+                EsperarElemento.seaVisible(ConfirmacionOrdenPage.LBL_ORDER_PLACED, 25),
                 Delay.forSocialization()
         );
     }
