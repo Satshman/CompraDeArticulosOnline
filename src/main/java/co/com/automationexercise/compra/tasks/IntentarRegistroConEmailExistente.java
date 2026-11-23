@@ -30,9 +30,13 @@ public class IntentarRegistroConEmailExistente implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
+        if (!LoginPage.TXT_SIGNUP_NAME.resolveFor(actor).isVisible()) {
+            actor.attemptsTo(
+                    Click.on(HomePage.BTN_SIGNUP_LOGIN),
+                    EsperarElemento.seaVisible(LoginPage.TXT_SIGNUP_NAME, 10)
+            );
+        }
         actor.attemptsTo(
-                Click.on(HomePage.BTN_SIGNUP_LOGIN),
-                EsperarElemento.seaVisible(LoginPage.TXT_SIGNUP_NAME),
                 Delay.forSocialization(),
                 Enter.theValue(nombre).into(LoginPage.TXT_SIGNUP_NAME),
                 Enter.theValue(email).into(LoginPage.TXT_SIGNUP_EMAIL),

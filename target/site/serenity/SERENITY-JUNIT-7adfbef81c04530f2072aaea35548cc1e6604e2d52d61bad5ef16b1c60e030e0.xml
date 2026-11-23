@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="1" name="Compra de artículos online en Automation Exercise" skipped="0" tests="3" time="19.27" timestamp="2026-11-18 05:48:56"><testcase name="Registro exitoso de usuario, selección de producto y confirmación de la orden de compra"/><testcase name="Compra de múltiples productos en el carrito por un usuario autenticado"><failure message="&#10;Expected: an element that is visible&#10;     but: no matching element found by [botón Signup / Login located with: xpath: //a[contains(@href, '/login')]]" type="java.lang.AssertionError">
-Expected: an element that is visible
-     but: no matching element found by [botón Signup / Login located with: xpath: //a[contains(@href, '/login')]]</failure><system-err>
-Expected: an element that is visible
-     but: no matching element found by [botón Signup / Login located with: xpath: //a[contains(@href, '/login')]]&#13;
-co.com.automationexercise.compra.interactions.EsperarElemento.performAs(EsperarElemento.java:33)&#13;
-co.com.automationexercise.compra.tasks.AbrirNavegador.performAs(AbrirNavegador.java:38)&#13;
-co.com.automationexercise.compra.stepdefinitions.CompraArticulosStepDefinitions.queElCompradorAbreLaPaginaWebDeAutomationExercise(CompraArticulosStepDefinitions.java:42)&#13;
-worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)&#13;
-worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)&#13;
-</system-err></testcase><testcase name="Intento de registro fallido con un correo electrónico previamente utilizado"/></testsuite>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Compra de artículos online en Automation Exercise" skipped="0" tests="3" time="19.97" timestamp="2026-11-22 11:42:40"><testcase name="Registro exitoso de usuario, selección de producto y confirmación de la orden de compra"/><testcase name="Compra de múltiples productos en el carrito por un usuario autenticado"/><testcase name="Intento de registro fallido con un correo electrónico previamente utilizado"/></testsuite>

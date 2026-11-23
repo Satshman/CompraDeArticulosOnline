@@ -9,6 +9,7 @@ import co.com.automationexercise.compra.tasks.*;
 import co.com.automationexercise.compra.userinterfaces.HomePage;
 import co.com.automationexercise.compra.utils.Constantes;
 import co.com.automationexercise.compra.utils.DataGenerator;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
@@ -35,6 +36,11 @@ public class CompraArticulosStepDefinitions {
     public void configurarEscenario() {
         OnStage.setTheStage(new OnlineCast());
         theActorCalled(Constantes.ACTOR_DEFAULT);
+    }
+
+    @After
+    public void finalizarEscenario() {
+        OnStage.drawTheCurtain();
     }
 
     @Dado("que el comprador abre la página web de Automation Exercise")
